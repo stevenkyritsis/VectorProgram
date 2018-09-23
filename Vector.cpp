@@ -7,15 +7,6 @@
 #include<iomanip>
 using namespace std;
 
-//Vector Structure
-struct Vector {
-	double x;
-	double y;
-};
-
-//Global Scalar
-	const double SCALAR = 10;
-
 //Function Prototypes
 void ViewVector();
 double EditVector(double, double);
@@ -24,10 +15,16 @@ void scalar_result(double, double)
 void scalar_prod(double, double)
 void magnitude(double)
 
-
-
-
 main() {
+	//Vector Structure
+	struct Vector {
+			double x;
+			double y;
+		};
+	
+	//Global Scalar
+	const double SCALAR = 10;
+	
 	//Vector Variables
 	Vector vec1;
 	Vector vec2;
