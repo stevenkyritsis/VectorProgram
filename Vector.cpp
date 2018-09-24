@@ -8,7 +8,7 @@
 using namespace std;
 
 //Function Prototypes
-void ViewVector();
+void ViewVector(double, double);
 double EditVector(double, double);
 void calc_difference(double, double);
 void scalar_result(double, double);
