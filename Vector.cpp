@@ -14,7 +14,7 @@ double EditVector(double, double);
 void calc_difference(double, double, double, double);
 void scalar_Result(double, double, double);
 double scalar_prod(double, double, double, double, double); //Return prod
-double magnitude(double, double, double); //Return Magnitude
+double magnitude(double, double); //Return Magnitude
 
 int main() {
 	//Vector Structure
@@ -44,7 +44,6 @@ int main() {
 
 	//Return Variables
 	double prod = 0;
-	double mag = 0;
 
 	//Input
 	char ret;
@@ -64,13 +63,7 @@ int main() {
 		cout << "What would you like to do?\n";
 		cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
 		cin >> input1;
-		//This while loop might cause trouble
-		while (input1 != 1 || input1 != 2) {
-			cout << "Error! Please try again!\n";
-			cout << "What would you like to do?\n";
-			cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
-			cin >> input1;
-		}
+		
 		//Switch from menu
 		switch (input1){
 			case 1: {
@@ -206,16 +199,15 @@ int main() {
 								cin >> input5;
 								if (input5 == 1)
 								{
-									magnitude(vec1.x, vec1.y, mag);
+									
 									cout << "The magnitude of Vec1 is: ";
-									cout << fixed << showpoint << setprecision(2) << mag;
+									cout << fixed << showpoint << setprecision(2) << magnitude(vec1.x, vec1.y) << endl;
 									break;
 								}
 								else if (input5 == 2)
 								{
-									magnitude(vec2.x, vec2.y, mag);
 									cout << "The magnitude of Vec2 is: ";
-									cout << fixed << showpoint << setprecision(2) << mag;
+									cout << fixed << showpoint << setprecision(2) << magnitude(vec2.x, vec2.y) << endl;
 									break;
 								}
 								else;
@@ -279,9 +271,9 @@ double scalar_prod(double x, double y, double a, double b, double p)
 	return p;
 }
 
-double magnitude(double x, double y, double m)
+double magnitude(double x, double y)
 {
-	m = sqrt((pow(x, 2.0) + pow(y, 2.0)));
-	return m;
+	const double POWER = 2.0;
+	return sqrt(pow(x, POWER) + pow(y, POWER));
 }
 
