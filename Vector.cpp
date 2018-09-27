@@ -34,7 +34,7 @@ int main() {
 	vec1.x = 4;
 	vec1.y = 9;
 
-	//String for choice
+	//char for choice
 	char choice;
 
 
@@ -43,8 +43,8 @@ int main() {
 	vec2.y = -1;
 
 	//Return Variables
-	double prod;
-	double mag;
+	double prod = 0;
+	double mag = 0;
 
 	//Input
 	char ret;
@@ -54,7 +54,7 @@ int main() {
 	cout << "to current values in the vectors. Each time the program is restarted the values are\n";
 	cout << "defaulted to (4,9) in Vec1 and (3,-1) in Vec2. Your scalar is also automatically set to 10.\n";
 	cout << endl;
-	cout << "********************MENU**************************" << endl;
+	cout << "*************************MENU**************************" << endl;
 	
 	
 	//Variable for user input of first menu
@@ -62,14 +62,14 @@ int main() {
 
 		
 		cout << "What would you like to do?\n";
-		cout << "1: edit/view Vectors \t\t 2: Perform operations to current vectors\n";
+		cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
 		cin >> input1;
 
 		switch (input1){
 			case 1: {
 						int input2;
 						cout << "Would you like to edit or view your vectors?" << endl;
-						cout << "1: View \t\t 2: Edit" << endl;
+						cout << "1: View \t 2: Edit" << endl;
 						cin >> input2;
 						switch (input2)
 						{
@@ -127,8 +127,8 @@ int main() {
 				{
 
 					cout << "Which operations would you like to perform on the vectors?\n";
-					cout << "1: Vector Subtraction \t\t 2: Scalar Multiplication\n";
-					cout << "3: Scalar Product \t\t 4: Magnitude\t\t 5: EXIT\n";
+					cout << "1: Vector Subtraction \t 2: Scalar Multiplication \t 3: Scalar Product\n";
+					cout << "4: Magnitude\t 5: Menu \t 6: EXIT\n";
 					cin >> input4;		
 
 					switch (input4)
@@ -141,33 +141,45 @@ int main() {
 
 						case 2: {
 							int input6;
+							while (input6 != 0 || input6 != 1 || input6 != 2)
+							{
 								cout << "Which vector would you like to scale?\n";
-								cout << "1: Vec1 \t\t 2: Vec2\n";
+								cout << "1: Vec1 \t 2: Vec2\n";
 								cin >> input6;
-							if (input6 == 1)
-							{
-								scalar_Result(vec1.x, vec1.y, SCALAR);
-							}
-							else if (input6 == 2)
-							{
-								scalar_Result(vec2.x, vec2.y, SCALAR);
-							}
-							else;
+								if (input6 == 1)
+								{
+									scalar_Result(vec1.x, vec1.y, SCALAR);
+									break;
+								}
+								else if (input6 == 2)
+								{
+									scalar_Result(vec2.x, vec2.y, SCALAR);
+									break;
+								}
+								else
+								{
+									cout << "Error! Please try again!\n";
+								}
+							}	
+								
 							
 							break;
 						}
 					
 
 						case 3:{
+							cout << "The scalar product is: ";
 							scalar_prod(vec1.x, vec1.y, vec2.x, vec2.y, prod);
+							cout << prod;
 							break;
 						}
 						
 
 						case 4:{
 							int input5;
+								input5 = 0;
 								cout << "Which vector would you like to see the magnitude?\n";
-								cout << "1: Vec1 \t\t 2: Vec2\t";
+								cout << "1: Vec1 \t 2: Vec2\t";
 								cin >> input5;
 								if (input5 == 1)
 								{
@@ -181,14 +193,15 @@ int main() {
 									cout << "The magnitude of Vec2 is: ";
 									cout << fixed << showpoint << setprecision(2) << mag;
 								}
-								else
-								{
-									cout << "Error! Please try again!\n";
-								}
+								else;
 						break;
 						}
 						
 						case 5: {
+							main();
+						}
+
+						case 6: {
 							return 0;
 						}
 				}
@@ -211,6 +224,7 @@ void viewVector(double x, double y, double a, double b)
 
 void calc_difference(double x, double y, double a, double b)
 {
+	cout << "The difference between Vec1 & Vec2 is: ";
 	cout << "(" << (x-a) << ", " << (y-b) << ")" << endl;
 }
 
@@ -241,7 +255,7 @@ double magnitude(double x, double y, double m)
 	double h;
 
 	h = pow(x, 2.0) + pow(y, 2.0);
-	m = sqrt(h + g);
+	m = sqrt(h);
 
 	return m;
 }
