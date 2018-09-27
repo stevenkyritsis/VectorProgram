@@ -63,6 +63,14 @@ int main() {
 		cout << "What would you like to do?\n";
 		cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
 		cin >> input1;
+		while (input1 < 1 || input1 > 2)
+		{
+			cout << "Error! Please try again!\n";
+			cout << "What would you like to do?\n";
+			cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
+			cin >> input1;
+		}
+	
 		
 		//Switch from menu
 		switch (input1){
