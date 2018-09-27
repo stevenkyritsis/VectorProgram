@@ -58,13 +58,20 @@ int main() {
 	
 	
 	//Variable for user input of first menu
-	int input1;
+	int input1 = 0;
 
 		
 		cout << "What would you like to do?\n";
 		cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
 		cin >> input1;
-
+		//This while loop might cause trouble
+		while (input1 != 1 || input1 != 2) {
+			cout << "Error! Please try again!\n";
+			cout << "What would you like to do?\n";
+			cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
+			cin >> input1;
+		}
+		//Switch from menu
 		switch (input1){
 			case 1: {
 						int input2;
@@ -84,28 +91,39 @@ int main() {
 									cin >> input3;
 								switch (input3){
 									case 1: {
+										while (ret != 'y' || ret != 'Y' || ret != 'm' || ret != 'M')
+										{
 												EditVector(vec1.x, vec1.y);
 												cout << "Would you like to edit the other vector?(Y/y)\n";
 												cin >> ret;
 												if (ret == 'y' || ret == 'Y')
 												{
 													EditVector(vec2.x, vec2.y);
+													break;
 												}
 												else;
 												cout << "Would you like to go back to the menu?(M/m)\n";
 												cin >> ret;
 												if (ret == 'm' || ret == 'M')
+												{
 													main();
+													break;
+												}
 												else;
+										}
+												
 											break;
 									}
 									case 2: {
+										while (ret != 'y' || ret != 'Y' || ret != 'm' || ret != 'M')
+										{
 											EditVector(vec2.x, vec2.y);
-											cout << "Would you like to edit the other vector?(y/m)\n";
+											cout << "Would you like to edit the other vector? (Y/y)\n";
 											cin >> ret;
-											if (ret == 'y')
+											if (ret == 'y' || ret == 'Y')
 											{
 												EditVector(vec1.x, vec1.y);
+												break;
 											}
 											else;
 											cout << "Would you like to go back to the menu?\n";
@@ -113,7 +131,10 @@ int main() {
 											if (ret == 'm')
 											{
 												main();
+												break;
 											}
+										}
+											
 										break;	
 									}
 								}
@@ -177,6 +198,8 @@ int main() {
 
 						case 4:{
 							int input5;
+							while (input5 != 0 || input5 != 1 || input5 != 2)
+							{
 								input5 = 0;
 								cout << "Which vector would you like to see the magnitude?\n";
 								cout << "1: Vec1 \t 2: Vec2\t";
@@ -186,23 +209,29 @@ int main() {
 									magnitude(vec1.x, vec1.y, mag);
 									cout << "The magnitude of Vec1 is: ";
 									cout << fixed << showpoint << setprecision(2) << mag;
+									break;
 								}
 								else if (input5 == 2)
 								{
 									magnitude(vec2.x, vec2.y, mag);
 									cout << "The magnitude of Vec2 is: ";
 									cout << fixed << showpoint << setprecision(2) << mag;
+									break;
 								}
 								else;
+								}
+								
 						break;
 						}
 						
 						case 5: {
 							main();
+							break;
 						}
 
 						case 6: {
 							return 0;
+							break;
 						}
 				}
 
@@ -252,11 +281,7 @@ double scalar_prod(double x, double y, double a, double b, double p)
 
 double magnitude(double x, double y, double m)
 {
-	double h;
-
-	h = pow(x, 2.0) + pow(y, 2.0);
-	m = sqrt(h);
-
+	m = sqrt((pow(x, 2.0) + pow(y, 2.0)));
 	return m;
 }
 
