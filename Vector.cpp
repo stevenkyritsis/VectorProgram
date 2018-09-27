@@ -231,8 +231,8 @@ int main() {
 
 						case 6: {
 							return 0;
-							break;
 						}
+						break;
 				}
 
 					cout << "Again? y/n?" << endl;
