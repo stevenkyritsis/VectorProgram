@@ -174,13 +174,13 @@ int main() {
 								{
 									magnitude(vec1.x, vec1.y, mag);
 									cout << "The magnitude of Vec1 is: ";
-									cout << mag;
+									cout << fixed << showpoint << setprecision(2) << mag;
 								}
 								else if (input5 == 2)
 								{
 									magnitude(vec2);
 									cout << "The magnitude of Vec2 is: ";
-									cout << mag;
+									cout << fixed << showpoint << setprecision(2) << mag;
 								}
 								else
 								{
