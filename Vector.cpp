@@ -12,7 +12,7 @@ using namespace std;
 void viewVector(double, double, double, double);
 void calc_difference(double, double, double, double);
 void scalar_Result(double, double, double);
-double scalar_prod(double, double, double, double, double); //Return prod
+double scalar_prod(double, double, double, double); //Return prod
 double magnitude(double, double); //Return Magnitude
 
 int main() {
@@ -41,13 +41,10 @@ int main() {
 	vec2.x = 3;
 	vec2.y = -1;
 
-	//Return Variables
-	double prod = 0;
 
 	//Input
 	char ret;
-	char input2 = 0;
-	char input3 = 0;
+	char input3;
 
 	//Menu
 	cout << "In this program you will be able to view/edit vectors and perform operations\n";
@@ -61,11 +58,12 @@ int main() {
 	int input1 = 0;
 
 		
-		cout << "What would you like to do?\n";
-		cout << "1: View Vectors \t 2: Perform operations to current vectors\n";
-		cin >> input1;
-		while (input1 < 1 || input1 > 2)
+	cout << "What would you like to do?\n";
+	cout << "1: View Vectors \t 2: Perform operations to current vectors\n";
+	cin >> input1;
+	while (input1 < 1 || input1 > 2)
 		{
+			input1 = 0;
 			cout << "Error! Please try again!\n";
 			cout << "What would you like to do?\n";
 			cout << "1: View Vectors \t 2: Perform operations to current vectors\n";
@@ -74,53 +72,35 @@ int main() {
 	
 		
 		//Switch from menu
-		switch (input1){
+	switch (input1){
 			case 1: {
 						viewVector(vec1.x, vec1.y, vec2.x, vec2.y);
-						cout << "Would you like to perform operations to the vectors?(y/n)\n";
-						cin >> input2;
-						while (input2 != 'y' || input2 != 'Y' || input2 != 'n' || input2 != 'N')
-						{
-							if (input2 == 'y' || input2 == 'Y')
-							{
-								break;
-							}
-							if (input2 == 'n' || input2 == 'N')
-							{
-								while (input3 != 'y' || input3 != 'Y' || input3 != 'n' || input3 != 'N')
+							while (input3 != 'y' || input3 != 'Y' || input3 != 'n' || input3 != 'N')
 								{
-									cout << "Would you like to exit the program?(y/n)\n";
+									cout << "Would you like to go back to the Menu?(y/n)\n";
 									cin >> input3;
 									if(input3 == 'y' || input3 == 'Y')
 									{
-										return 0;
+										main();
 										break;
 									}
 									else if (input3 == 'n' || input3 == 'N')
 									{
-										main();
+										return 0;
 										break;
 									}
 									else
 									{
 										cout << "Error! Please try again!\n";
 									}
-								}
-								
-							}
-							else
-							{
-								cout << "Error! Please try again!\n";
-							}
-						}
+								}	
 						break;
 						}
 			case 2: {
-				int input4 = 0;
+				int input4;
 
 				do 
 				{
-
 					cout << "Which operations would you like to perform on the vectors?\n";
 					cout << "1: Vector Subtraction \t 2: Scalar Multiplication \t 3: Scalar Product\n";
 					cout << "4: Magnitude\t 5: Menu \t 6: EXIT\n";
@@ -164,8 +144,7 @@ int main() {
 
 						case 3:{
 							cout << "The scalar product is: ";
-							scalar_prod(vec1.x, vec1.y, vec2.x, vec2.y, prod);
-							cout << prod;
+							cout << scalar_prod(vec1.x, vec1.y, vec2.x, vec2.y) << endl;
 							break;
 						}
 						
@@ -235,11 +214,9 @@ void scalar_Result(double x, double y, double s)
 	cout << "(" << (x*s) << ", " << (y*s) << ")" << endl; 
 }
 
-double scalar_prod(double x, double y, double a, double b, double p)
+double scalar_prod(double x, double y, double a, double b)
 {
-	p = (x*a) + (y*b);
-	
-	return p;
+	return (x*a) + (y*b);
 }
 
 double magnitude(double x, double y)
