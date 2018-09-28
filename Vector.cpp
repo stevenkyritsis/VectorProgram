@@ -9,11 +9,23 @@
 using namespace std;
 
 //Function Prototypes
+
+//Function for Viewing Vector
 void viewVector(double, double, double, double);
+
+//Function for Editing Vector
 double EditVector(double, double);
+
+//Function for Caclulating the difference
 void calc_difference(double, double, double, double);
+
+//Function for Scalar Multiplication
 void scalar_Result(double, double, double);
+
+//Function for Scalar Product
 double scalar_prod(double, double, double, double, double); //Return prod
+
+//Function for Vector magnitude
 double magnitude(double, double); //Return Magnitude
 
 int main() {
@@ -34,9 +46,6 @@ int main() {
 	vec1.x = 4;
 	vec1.y = 9;
 
-	//char for choice
-	char choice;
-
 
 	//Vec2 assignment
 	vec2.x = 3;
@@ -47,6 +56,8 @@ int main() {
 
 	//Input
 	char ret;
+	char choice;
+	
 
 	//Menu
 	cout << "In this program you will be able to view/edit vectors and perform operations\n";
