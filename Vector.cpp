@@ -127,9 +127,9 @@ int main() {
 												break;
 											}
 											else;
-											cout << "Would you like to go back to the menu?\n";
+											cout << "Would you like to go back to the menu (M/m)?\n";
 											cin >> ret;
-											if (ret == 'm')
+											if (ret == 'm' || ret == 'M')
 											{
 												main();
 												break;
