@@ -9,23 +9,10 @@
 using namespace std;
 
 //Function Prototypes
-
-//Function for Viewing Vector
 void viewVector(double, double, double, double);
-
-//Function for Editing Vector
-double EditVector(double, double);
-
-//Function for Caclulating the difference
 void calc_difference(double, double, double, double);
-
-//Function for Scalar Multiplication
 void scalar_Result(double, double, double);
-
-//Function for Scalar Product
 double scalar_prod(double, double, double, double, double); //Return prod
-
-//Function for Vector magnitude
 double magnitude(double, double); //Return Magnitude
 
 int main() {
@@ -46,6 +33,9 @@ int main() {
 	vec1.x = 4;
 	vec1.y = 9;
 
+	//char for choice
+	char choice;
+
 
 	//Vec2 assignment
 	vec2.x = 3;
@@ -56,15 +46,15 @@ int main() {
 
 	//Input
 	char ret;
-	char choice;
-	
+	char input2 = 0;
+	char input3 = 0;
 
 	//Menu
 	cout << "In this program you will be able to view/edit vectors and perform operations\n";
 	cout << "to current values in the vectors. Each time the program is restarted the values are\n";
 	cout << "defaulted to (4,9) in Vec1 and (3,-1) in Vec2. Your scalar is also automatically set to 10.\n";
 	cout << endl;
-	cout << "*************************MENU**************************" << endl;
+	cout << "********************************MENU**********************************" << endl;
 	
 	
 	//Variable for user input of first menu
@@ -72,13 +62,13 @@ int main() {
 
 		
 		cout << "What would you like to do?\n";
-		cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
+		cout << "1: View Vectors \t 2: Perform operations to current vectors\n";
 		cin >> input1;
 		while (input1 < 1 || input1 > 2)
 		{
 			cout << "Error! Please try again!\n";
 			cout << "What would you like to do?\n";
-			cout << "1: edit/view Vectors \t 2: Perform operations to current vectors\n";
+			cout << "1: View Vectors \t 2: Perform operations to current vectors\n";
 			cin >> input1;
 		}
 	
@@ -86,72 +76,44 @@ int main() {
 		//Switch from menu
 		switch (input1){
 			case 1: {
-						int input2;
-						cout << "Would you like to edit or view your vectors?" << endl;
-						cout << "1: View \t 2: Edit" << endl;
+						viewVector(vec1.x, vec1.y, vec2.x, vec2.y);
+						cout << "Would you like to perform operations to the vectors?(y/n)\n";
 						cin >> input2;
-						switch (input2)
+						while (input2 != 'y' || input2 != 'Y' || input2 != 'n' || input2 != 'N')
 						{
-							case 1: {
-								viewVector(vec1.x, vec1.y, vec2.x, vec2.y);
+							if (input2 == 'y' || input2 == 'Y')
+							{
 								break;
 							}
-							case 2: {
-								int input3 = 0;
-									cout << "Which vector would you like to edit? (You can only edit one at a time.)\n";
-									cout << "1: Vec1 \t\t 2: Vec2\n";
+							if (input2 == 'n' || input2 == 'N')
+							{
+								while (input3 != 'y' || input3 != 'Y' || input3 != 'n' || input3 != 'N')
+								{
+									cout << "Would you like to exit the program?(y/n)\n";
 									cin >> input3;
-								switch (input3){
-									case 1: {
-										while (ret != 'y' || ret != 'Y' || ret != 'm' || ret != 'M')
-										{
-												EditVector(vec1.x, vec1.y);
-												cout << "Would you like to edit the other vector?(Y/y)\n";
-												cin >> ret;
-												if (ret == 'y' || ret == 'Y')
-												{
-													EditVector(vec2.x, vec2.y);
-													break;
-												}
-												else;
-												cout << "Would you like to go back to the menu?(M/m)\n";
-												cin >> ret;
-												if (ret == 'm' || ret == 'M')
-												{
-													main();
-													break;
-												}
-												else;
-										}
-												
-											break;
+									if(input3 == 'y' || input3 == 'Y')
+									{
+										return 0;
+										break;
 									}
-									case 2: {
-										while (ret != 'y' || ret != 'Y' || ret != 'm' || ret != 'M')
-										{
-											EditVector(vec2.x, vec2.y);
-											cout << "Would you like to edit the other vector? (Y/y)\n";
-											cin >> ret;
-											if (ret == 'y' || ret == 'Y')
-											{
-												EditVector(vec1.x, vec1.y);
-												break;
-											}
-											else;
-											cout << "Would you like to go back to the menu (M/m)?\n";
-											cin >> ret;
-											if (ret == 'm' || ret == 'M')
-											{
-												main();
-												break;
-											}
-										}
-											
-										break;	
+									else if (input3 == 'n' || input3 == 'N')
+									{
+										main();
+										break;
+									}
+									else
+									{
+										cout << "Error! Please try again!\n";
 									}
 								}
+								
 							}
-							break;
+							else
+							{
+								cout << "Error! Please try again!\n";
+							}
+						}
+						break;
 						}
 			case 2: {
 				int input4 = 0;
@@ -251,7 +213,6 @@ int main() {
 				} while(choice == 'y' || choice == 'Y');
 			}
 		}
-	}
 	return 0;
 }
 
@@ -266,15 +227,6 @@ void calc_difference(double x, double y, double a, double b)
 {
 	cout << "The difference between Vec1 & Vec2 is: ";
 	cout << "(" << (x-a) << ", " << (y-b) << ")" << endl;
-}
-
-double EditVector(double x, double y)
-{
-	cout << "Please enter the value for x: ";
-	cin >> x;
-	cout << "Please emter the value for y: ";
-	cin >> y;
-	return x;
 }
 
 void scalar_Result(double x, double y, double s)
@@ -295,4 +247,3 @@ double magnitude(double x, double y)
 	const double POWER = 2.0;
 	return sqrt(pow(x, POWER) + pow(y, POWER));
 }
-
